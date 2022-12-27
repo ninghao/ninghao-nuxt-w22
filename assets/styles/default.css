@@ -1,0 +1,67 @@
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+/* App */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header */
+.app > header {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-bottom: 1px solid #eaeaea;
+  margin-bottom: 24px;
+}
+
+.app > header > div:nth-child(1) {
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  font-weight: bold;
+  margin-right: 56px;
+}
+
+.app > header > div:nth-child(1) > span {
+  font-size: 32px;
+  padding-right: 8px;
+}
+
+.app > header > nav {
+  display: flex;
+  flex-grow: 1;
+  color: #666;
+}
+
+.app > header > nav > div {
+  margin: 0 16px;
+}
+
+/* Main */
+.app > main {
+  flex-grow: 1;
+  padding: 8px 16px;
+  display: flex;
+  flex-direction: column;
+}
