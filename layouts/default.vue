@@ -18,6 +18,9 @@
             <img src="/icons/account.svg" alt="登录" />
           </NuxtLink>
         </div>
+        <div v-else>
+          <img src="/icons/logout.svg" alt="退出登录" @click="useLogout" />
+        </div>
         <div v-if="currentUser">{{ currentUser.name }}</div>
       </div>
     </header>
