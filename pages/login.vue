@@ -48,6 +48,7 @@ const login = async () => {
 
   if (data.value) {
     currentUser.value = data.value;
+    useLocalStorage('currentUser', currentUser.value);
   }
 };
 </script>
