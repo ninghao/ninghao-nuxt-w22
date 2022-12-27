@@ -1,8 +1,17 @@
 <template>
   <div class="app">
     <header>
-      <div><span>🌲</span> {{ name }}</div>
-      <nav></nav>
+      <div>
+        <span>🌲</span> <NuxtLink to="/">{{ name }}</NuxtLink>
+      </div>
+      <nav>
+        <div>
+          <NuxtLink to="/about">关于</NuxtLink>
+        </div>
+        <div>
+          <NuxtLink to="/posts">内容</NuxtLink>
+        </div>
+      </nav>
     </header>
     <main>
       <slot></slot>

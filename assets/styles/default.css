@@ -65,3 +65,8 @@ a {
   display: flex;
   flex-direction: column;
 }
+
+.router-link-active {
+  font-weight: bold;
+  color: black;
+}
