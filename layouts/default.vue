@@ -28,8 +28,10 @@
 </template>
 
 <script setup lang="ts">
+import type { CurrentUser } from '~/types/use.type';
+
 const { name } = useAppConfig();
-const currentUser = useState('currentUser');
+const currentUser = useState<CurrentUser>('currentUser');
 </script>
 
 <style>

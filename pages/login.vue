@@ -26,6 +26,8 @@
 </template>
 
 <script setup lang="ts">
+import type { CurrentUser } from '~/types/use.type';
+
 useHead({
   title: '登录',
 });
@@ -38,7 +40,7 @@ const login = async () => {
   // console.log('name', name.value);
   // console.log('password', password.value);
 
-  const { data } = await useApiFetch('login', {
+  const { data } = await useApiFetch<CurrentUser>('login', {
     method: 'POST',
     body: {
       name: name.value,
