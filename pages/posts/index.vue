@@ -22,7 +22,9 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { PostList } from '~~/types/post.type';
+
 const router = useRouter();
 const {
   query: { page: pageNumber },
@@ -49,7 +51,7 @@ const {
   pending,
   refresh,
   error,
-} = await useApiFetch(() => `posts?page=${page.value}`);
+} = await useApiFetch<PostList>(() => `posts?page=${page.value}`);
 
 refresh();
 
