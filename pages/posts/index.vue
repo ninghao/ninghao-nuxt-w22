@@ -22,12 +22,10 @@ const page = ref(1);
 
 const backward = () => {
   page.value--;
-  refresh();
 };
 
 const forward = () => {
   page.value++;
-  refresh();
 };
 
 const {
@@ -35,9 +33,5 @@ const {
   pending,
   refresh,
   error,
-} = await useFetch(
-  () => `https://nid-node.ninghao.co/posts?page=${page.value}`,
-);
-
-useApiFetch();
+} = await useApiFetch(() => `posts?page=${page.value}`);
 </script>
