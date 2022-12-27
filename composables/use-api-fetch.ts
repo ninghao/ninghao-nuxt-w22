@@ -1,3 +1,7 @@
 export const useApiFetch = () => {
-  console.log('userApiFetch');
+  const {
+    public: { apiBaseUrl },
+  } = useRuntimeConfig();
+
+  console.log(apiBaseUrl);
 };

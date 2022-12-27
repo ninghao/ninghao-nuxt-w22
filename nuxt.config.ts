@@ -7,4 +7,10 @@ export default defineNuxtConfig({
   image: {
     domains: ['resources.ninghao.net'],
   },
+
+  runtimeConfig: {
+    public: {
+      apiBaseUrl: 'https://nid-node.ninghao.co',
+    },
+  },
 });
