@@ -1,5 +1,10 @@
 <template>
   <div>
+    <Head>
+      <Title>
+        {{ page > 1 ? `内容列表 / 第${page}页` : '内容列表' }}
+      </Title>
+    </Head>
     <h1>内容列表</h1>
     <div>
       <button @click="backward">上一页</button>
@@ -18,14 +23,25 @@
 </template>
 
 <script setup>
-const page = ref(1);
+const router = useRouter();
+const {
+  query: { page: pageNumber },
+} = useRoute();
+
+const page = ref(pageNumber ? parseInt(`${pageNumber}`, 10) : 1);
+
+const updateQuery = () => {
+  router.push({ query: { page: page.value } });
+};
 
 const backward = () => {
   page.value--;
+  updateQuery();
 };
 
 const forward = () => {
   page.value++;
+  updateQuery();
 };
 
 const {
@@ -34,4 +50,12 @@ const {
   refresh,
   error,
 } = await useApiFetch(() => `posts?page=${page.value}`);
+
+refresh();
+
+watch(useRoute(), ({ query }) => {
+  if (query.page === undefined) {
+    page.value = 1;
+  }
+});
 </script>
