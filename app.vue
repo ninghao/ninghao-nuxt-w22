@@ -3,9 +3,11 @@
 </template>
 
 <script setup lang="ts">
+const { name } = useAppConfig();
+
 useHead({
   titleTemplate(title) {
-    return title ? `${title} - 宁皓网` : '宁皓网';
+    return title ? `${title} - ${name}` : name;
   },
 });
 </script>
