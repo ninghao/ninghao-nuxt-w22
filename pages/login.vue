@@ -33,8 +33,18 @@ useHead({
 const name = ref('');
 const password = ref('');
 
-const login = () => {
-  console.log('name', name.value);
-  console.log('password', password.value);
+const login = async () => {
+  // console.log('name', name.value);
+  // console.log('password', password.value);
+
+  const { data } = await useApiFetch('login', {
+    method: 'POST',
+    body: {
+      name: name.value,
+      password: password.value,
+    },
+  });
+
+  console.log(data.value);
 };
 </script>
