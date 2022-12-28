@@ -1,11 +1,28 @@
 <template>
   <div>
-    <h1>内容页面 {{ id }}</h1>
+    <Head>
+      <Title>{{ post?.title }}</Title>
+    </Head>
+    <img
+      style="width: 100%"
+      :src="`${apiBaseUrl}/files/${post?.file.id}/serve?size=large`"
+    />
+    <h1>{{ post?.title }}</h1>
+    <div>{{ post?.content }}</div>
+    <div>- {{ post?.user.name }}</div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { Post } from '~~/types/post.type';
+
 const {
   params: { id },
 } = useRoute();
+
+const {
+  public: { apiBaseUrl },
+} = useRuntimeConfig();
+
+const { data: post } = await useApiFetch<Post>(`posts/${id}`);
 </script>
