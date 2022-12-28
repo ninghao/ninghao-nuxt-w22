@@ -2,11 +2,7 @@
 export default defineNuxtConfig({
   ssr: true,
 
-  modules: ['@nuxt/image-edge'],
-
-  image: {
-    domains: ['resources.ninghao.net'],
-  },
+  modules: [],
 
   runtimeConfig: {
     public: {
