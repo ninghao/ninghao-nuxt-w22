@@ -72,9 +72,25 @@ const createPost = async () => {
     },
   });
 
+  await createFile((data.value as any).insertId);
+
   if (data.value) {
     title.value = '';
     content.value = '';
+  }
+};
+
+const createFile = async (postId: number) => {
+  const formData = new FormData();
+  formData.append('file', file.value!);
+
+  const { data } = await useApiFetch(`files?post=${postId}`, {
+    method: 'POST',
+    body: formData,
+  });
+
+  if (data.value) {
+    imagePreviewUrl.value = '';
   }
 };
 </script>
