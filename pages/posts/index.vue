@@ -17,6 +17,13 @@
         <div>
           - <small>{{ post.user.name }}</small>
         </div>
+        <div>
+          <div>
+            <NuxtLink :to="`/posts/${post.id}/edit`">
+              <img src="/icons/edit.svg" alt="编辑" />
+            </NuxtLink>
+          </div>
+        </div>
       </div>
     </div>
   </div>
