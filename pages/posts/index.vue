@@ -11,17 +11,28 @@
       <button @click="forward">下一页</button>
     </div>
     <div v-if="pending">加载中...</div>
-    <div v-if="posts !== null">
+    <div class="post-list" v-if="posts !== null">
       <div v-for="post in posts" :key="post.id">
-        <div>{{ post.content }}</div>
         <div>
-          - <small>{{ post.user.name }}</small>
+          <img
+            :src="`${apiBaseUrl}/files/${post.file.id}/serve?size=thumbnail`"
+            :alt="post.title"
+          />
         </div>
         <div>
           <div>
-            <NuxtLink :to="`/posts/${post.id}/edit`">
-              <img src="/icons/edit.svg" alt="编辑" />
-            </NuxtLink>
+            <NuxtLink :to="`/posts/${post.id}`">{{ post.title }}</NuxtLink>
+          </div>
+          <div>{{ post.content }}</div>
+          <div>
+            - <small>{{ post.user.name }}</small>
+          </div>
+          <div>
+            <div>
+              <NuxtLink :to="`/posts/${post.id}/edit`">
+                <img src="/icons/edit.svg" alt="编辑" />
+              </NuxtLink>
+            </div>
           </div>
         </div>
       </div>
@@ -31,6 +42,10 @@
 
 <script setup lang="ts">
 import { PostList } from '~~/types/post.type';
+
+const {
+  public: { apiBaseUrl },
+} = useRuntimeConfig();
 
 const router = useRouter();
 const {
