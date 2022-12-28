@@ -25,4 +25,8 @@ const {
 } = useRuntimeConfig();
 
 const { data: post } = await useApiFetch<Post>(`posts/${id}`);
+
+if (!post.value) {
+  showError({ statusCode: 404, message: '没找到内容页面。' });
+}
 </script>
