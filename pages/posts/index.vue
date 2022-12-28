@@ -33,6 +33,13 @@
                 <img src="/icons/edit.svg" alt="编辑" />
               </NuxtLink>
             </div>
+            <div>
+              <img
+                src="/icons/delete.svg"
+                alt="删除内容"
+                @click="deletePost(post.id)"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -82,4 +89,12 @@ watch(useRoute(), ({ query }) => {
     page.value = 1;
   }
 });
+
+const deletePost = async (postId: number) => {
+  await useApiFetch(`posts/${postId}`, {
+    method: 'DELETE',
+  });
+
+  refresh();
+};
 </script>
