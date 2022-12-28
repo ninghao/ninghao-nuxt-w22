@@ -1,5 +1,8 @@
 <template>
   <form @submit.prevent>
+    <div v-if="imagePreviewUrl">
+      <img style="max-width: 380px" :src="imagePreviewUrl" alt="图像预览" />
+    </div>
     <div>
       <button
         class="bordered"
@@ -28,6 +31,8 @@
 </template>
 
 <script setup lang="ts">
+import { read } from 'fs';
+
 useHead({ title: '创建内容' });
 
 const title = ref('');
@@ -41,7 +46,21 @@ const onChangeFile = (event: Event) => {
     file.value = files[0];
   }
 
-  console.log(file.value);
+  if (file.value) {
+    createImagePreview(file.value);
+  }
+};
+
+const imagePreviewUrl = ref<string>();
+
+const createImagePreview = (file: File) => {
+  const reader = new FileReader();
+
+  reader.readAsDataURL(file);
+
+  reader.onload = (event) => {
+    imagePreviewUrl.value = event.target!.result as string;
+  };
 };
 
 const createPost = async () => {
